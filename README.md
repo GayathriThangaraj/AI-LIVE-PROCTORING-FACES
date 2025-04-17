@@ -1,28 +1,27 @@
-A simple real-time head position detection system built using Flask, OpenCV, and dlib. The system checks if the user is facing forward and shows alerts if they look away or get distracted.
+A simple real-time head position and distraction detection system built using Flask and OpenCV. The system checks if the user’s face is visible and whether they are distracted by looking away. Alerts are displayed in real-time via a web interface.
 
 How It Works
-  The system detects faces using Haar Cascade and facial landmarks using dlib.
+   The system detects faces using Haar Cascade.
 
-  It estimates the head's position (yaw and pitch).
+   If no face is detected, an alert "No face detected" is shown.
 
-  If the head is turned too far to the side or up/down, it shows a distraction alert.
+   If multiple faces are detected, it shows "Multiple faces detected".
+
+   This is useful for online exams or proctoring environments where only one focused user should be present.
 
 Installation
-Clone the repository:
+ 1. Clone the Repository
+    git clone https://github.com/yourusername/yourrepository.git
+    cd yourrepository
+ 2. Install Dependencies
+    Make sure you have Python installed. Then install the required Python libraries:
 
-git clone https://github.com/yourusername/yourrepository.git
+pip install opencv-python Flask numpy
+ 3. Download Haar Cascade Model
+    Download the file haarcascade_frontalface_default.xml
+Place it inside a folder named models/ in your project directory.
 
-cd yourrepository
+Running the Application
+   python app.py
+   Open your browser and go to: http://127.0.0.1:5000/
 
-Install the dependencies: Install the required libraries using pip:
-pip install opencv-python dlib numpy Flask
-Download the facial landmark model: Download shape_predictor_68_face_landmarks.dat from here, extract it, and place it in the models/ directory.
-
-Run the application:
-python app.py
-Access the application: Open a browser and go to http://127.0.0.1:5000/ to view the video feed and distraction alerts.
-
-How to Use
-  The video feed will show up in your browser.
-
-  If the user's head is not facing forward, an alert will appear.
